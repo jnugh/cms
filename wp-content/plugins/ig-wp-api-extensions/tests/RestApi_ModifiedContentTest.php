@@ -3,7 +3,7 @@
 /**
  * Author: Martin
  * Created: 27.09.2015 10:03
- */
+
 class RestApi_ModifiedContentTest extends PHPUnit_Framework_TestCase {
 	public function test() {
 		$route = 'http://localhost/wordpress/augsburg/de/wp-json/extensions/v0/
@@ -15,3 +15,4 @@ class RestApi_ModifiedContentTest extends PHPUnit_Framework_TestCase {
 		$body = $r->getResponseBody();
 	}
 }
+*/
