@@ -43,7 +43,7 @@ class SSA_PDF extends TCPDF
 		$this->SetAutoPageBreak(false, 0); 			//disable auto-page-break
 
 		//when the plugin is active, change the header
-		if(is_plugin_active('pdf-creator-lite-font-extension/pdfcl_fox.php')){
+		if(is_plugin_active('ig-pdf-creator-lite-font-extension/pdfcl_fox.php')){
 			$rightshift = 0;
 			$leftshift = 0;
 
@@ -101,7 +101,7 @@ class SSA_PDF extends TCPDF
 		$this->SetAutoPageBreak( $auto_page_break, $bMargin ); 	//restore auto-page-break status
 		$this->setPageMark(); 									//set the starting point for the page content
 
-		if(is_plugin_active('pdf-creator-lite-font-extension/pdfcl_fox.php')){
+		if(is_plugin_active('ig-pdf-creator-lite-font-extension/pdfcl_fox.php')){
 			$headerContent = '<br><p style="font-family:' . $this->text_font . '; font-size:15px; color:' . $this->text_hex . '; line-height:15px;">Page: '. $title . ' -  ' . $this->displayDate .'</p>';
 			// Title
 
