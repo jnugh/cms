@@ -134,6 +134,50 @@ function add_language(){
 	$pages = get_pages( $args );
 
 	echo '<script type="text/javascript">';
+	//1. After an Empty Div with the same ID
+	echo 'jQuery("#selectPagesDiv").attr("id","help_id");';
+	echo 'jQuery("#help_id").after("<div id=\"selectPagesDiv\"><\/div>");';
+	//2. Append heading
+	echo 'jQuery("#selectPagesDiv").append("<h3>Select your pages</h3>");';
+	//3. Append the Check-All Box
+	echo 'jQuery("#selectPagesDiv").append(\'<div style="height:30px; border-bottom:1px solid #CCCCCC;"><input value="true" id="checkAll" name="checkAll" checked="checked" type="checkbox"><label for="checkAll">Uncheck / Check All</label></div>\<br></br>\');';
+	//4. Create Table
+	echo 'jQuery("#selectPagesDiv").append(\'<table id="fox_table_languages" style="width:100%; border: 1px solid #FDDA0E; border-collapse: separate; border-spacing: 5px;"></table>\');';
+		// width first column - check box
+	$cwidth=158;
+	echo 'jQuery("#fox_table_languages").append(\'<colgroup id="fox_column_width"></colgroup>\');';
+	echo 'jQuery("#fox_column_width").append(\'<col width="10">\');';
+	echo 'jQuery("#fox_column_width").append(\'<col width="'.$cwidth.'">\');';
+	echo 'jQuery("#fox_column_width").append(\'<col width="'.$cwidth.'">\');';
+	echo 'jQuery("#fox_column_width").append(\'<col width="'.$cwidth.'">\');';
+	echo 'jQuery("#fox_column_width").append(\'<col width="'.$cwidth.'">\');';
+	echo 'jQuery("#fox_column_width").append(\'<col width="'.$cwidth.'">\');';
+	echo 'jQuery("#fox_table_languages").append(\'<tr><th></th><th>German</th><th>English</th><th>French</th><th>Arabian</th><th>Persian</th></tr>\');';
+	//5. remove Original Element
+	echo 'jQuery("#help_id").remove();';
+	foreach ($pages as $page)
+	{
+		$original_ID_DE = icl_object_id( $page->ID,'post',false, 'de' );
+		$original_title_de = get_the_title( $original_ID_DE );
+		$original_ID_EN = icl_object_id( $page->ID,'post',false, 'en' );
+		$original_title_en = get_the_title( $original_ID_EN );
+		$original_ID_FR = icl_object_id( $page->ID,'post',false, 'fr' );
+		$original_title_fr = get_the_title( $original_ID_FR );
+		$original_ID_AR = icl_object_id( $page->ID,'post',false, 'ar' );
+		$original_title_ar = get_the_title( $original_ID_AR );
+		$original_ID_FA = icl_object_id( $page->ID,'post',false, 'fa' );
+		$original_title_fa = get_the_title( $original_ID_FA );
+		echo 'jQuery("#fox_table_languages").append(\'<tr>'.
+				'<td style="padding: 0 5px 0 5px;"><input name="checkerPage['.$page->ID.']" class="checkerPage" value="'.$page->ID.'" checked="checked" id="page'.$page->ID.'" type="checkbox"></td>'.
+				'<td style="padding: 0 5px 0 5px;"><label for="page'.$page->ID.'"><font color=\"blue\"><i>'.$original_title_de.'</i></font></label></label></td>'.
+				'<td style="padding: 0 5px 0 5px;"><label for="page'.$page->ID.'"><font color=\"brown\"><i>'.$original_title_en.'</i></font></label></label></td>'.
+				'<td style="padding: 0 5px 0 5px;"><label for="page'.$page->ID.'"><font color=\"red\"><i>'.$original_title_fr.'</i></font></label></label></td>'.
+				'<td style="padding: 0 5px 0 5px;"><label for="page'.$page->ID.'"><font color=\"orange\"><i>'.$original_title_ar.'</i></font></label></label></td>'.
+				'<td style="padding: 0 5px 0 5px;"><label for="page'.$page->ID.'"><font color=\"green\"><i>'.$original_title_fa.'</i></font></label></label></td>'.
+		'</tr>\');';
+	}
+	echo 'jQuery("tr:even").css("background-color", "#E5E4E2");';
+
 	foreach ($pages as $page)
 	{
 		$original_ID_DE = icl_object_id( $page->ID,'post',false, 'de' );
